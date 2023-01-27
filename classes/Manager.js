@@ -11,6 +11,29 @@ class Manager extends Employee {
     }
 }
 
+let managerQuestions = [
+    {
+        type: 'input',
+        message: "What is the manager's name?",
+        name: 'name',
+    },
+    {
+        type: 'input',
+        message: "What is the manager's ID?",
+        name: 'id',
+    },
+    {
+        type: 'input',
+        message: "What is the manager's email?",
+        name: 'email',
+    },
+    {
+        type: 'input',
+        message: "What is the manager's office number?",
+        name: 'officeNumber',
+    }
+];
+
 let managerHTML = `
 <div class="card">
     <div class="employeeHeader">
@@ -24,6 +47,6 @@ let managerHTML = `
         <div>${this.officeNumber}</div>
     </div>
 </div>
-`
+`;
 
-module.exports = {Manager, managerHTML};
+module.exports = {Manager, managerQuestions, managerHTML};

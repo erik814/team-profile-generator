@@ -5,7 +5,6 @@ const Employee = require('./classes/Employee');
 const {Manager} = require('./classes/Manager');
 const {Engineer} = require('./classes/Engineer');
 const {Intern} = require('./classes/Intern');
-const questions = require('./assets/questions');
 
 let employees = [];
 
@@ -70,7 +69,7 @@ function addEmployee(){
 
 function hireManager(){
     inquirer
-        .prompt(questions.managerQuestions)
+        .prompt(Manager.managerQuestions)
         .then(data =>{
             employees.push(new Manager(data.name, data.id, data.email, data.officeNumber));
             console.log('----------------');
@@ -82,7 +81,7 @@ function hireManager(){
 
 function hireEngineer(){
     inquirer
-        .prompt(questions.engineerQuestions)
+        .prompt(Engineer.engineerQuestions)
         .then(data =>{
             console.log(data);
             employees.push(new Engineer(data.name, data.id, data.email, data.github));
@@ -95,7 +94,7 @@ function hireEngineer(){
 
 function hireIntern(){
     inquirer
-        .prompt(questions.internQuestions)
+        .prompt(Intern.internQuestions)
         .then(data =>{
             employees.push(new Intern(data.name, data.id, data.email, data.school));
             console.log('----------------');

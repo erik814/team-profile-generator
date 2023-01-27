@@ -15,6 +15,29 @@ class Engineer extends Employee{
     }
 }
 
+let engineerQuestions = [
+    {
+        type: 'input',
+        message: "What is the engineer's name?",
+        name: 'name',
+    },
+    {
+        type: 'input',
+        message: "What is the engineer's ID?",
+        name: 'id',
+    },
+    {
+        type: 'input',
+        message: "What is the engineer's email?",
+        name: 'email',
+    },
+    {
+        type: 'input',
+        message: "What is the engineer's GitHub username?",
+        name: 'github',
+    }
+];
+
 let engineerHTML = `
 <div class="card">
     <div class="employeeHeader">
@@ -28,7 +51,7 @@ let engineerHTML = `
         <div>github</div>
     </div>
 </div>
-`
+`;
 
 
-module.exports = {Engineer, engineerHTML};
+module.exports = {Engineer, engineerQuestions, engineerHTML};

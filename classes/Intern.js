@@ -15,6 +15,29 @@ class  Intern extends Employee{
     }
 }
 
+let internQuestions = [
+    {
+        type: 'input',
+        message: "What is the intern's name?",
+        name: 'name',
+    },
+    {
+        type: 'input',
+        message: "What is the intern's ID?",
+        name: 'id',
+    },
+    {
+        type: 'input',
+        message: "What is the intern'ss email?",
+        name: 'email',
+    },
+    {
+        type: 'input',
+        message: "What is the intern's school?",
+        name: 'school',
+    }
+];
+
 let internHTML = `
 <div class="card">
     <div class="employeeHeader">
@@ -28,6 +51,6 @@ let internHTML = `
         <div>school</div>
     </div>
 </div>
-`
+`;
 
-module.exports = {Intern, internHTML};
+module.exports = {Intern, internQuestions, internHTML};
