@@ -15,4 +15,20 @@ class Engineer extends Employee{
     }
 }
 
-module.exports = Engineer;
+let engineerHTML = `
+<div class="card">
+    <div class="employeeHeader">
+        <h2>Name</h2>
+        <h3>Role</h3>
+    </div>
+    
+    <div class="info">
+        <div>ID</div>
+        <div>email</div>
+        <div>github</div>
+    </div>
+</div>
+`
+
+
+module.exports = {Engineer, engineerHTML};
