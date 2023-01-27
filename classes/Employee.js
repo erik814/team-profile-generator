@@ -21,3 +21,5 @@ class Employee{
         return 'Role: Employee';
     }
 }
+
+module.exports = Employee;
