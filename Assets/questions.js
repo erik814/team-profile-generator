@@ -67,4 +67,4 @@ let internQuestions = [
     }
 ];
 
-module.exports = {}
+module.exports = {managerQuestions, engineerQuestions, internQuestions};

@@ -5,6 +5,7 @@ const Employee = require('./classes/Employee');
 const Manager = require('./classes/Manager');
 const Engineer = require('./classes/Engineer');
 const Intern = require('./classes/Intern');
+const questions = require('./assets/questions');
 
 let employees = [];
 
@@ -12,8 +13,6 @@ let employees = [];
 // const dave = new Manager('Dave', 20, 'dsgdfgdfg', '35');
 // employees.push(dave);
 // console.log(employees);
-
-
 
 
 start();
@@ -70,32 +69,34 @@ function addEmployee(){
 
 function hireManager(){
     inquirer
-        .prompt(Manager.managerQuestions)
+        .prompt(questions.managerQuestions)
         .then(data =>{
             employees.push(new Manager(data.name, data.id, data.email, data.officeNumber));
             console.log(`${data.name} has been added as a manager.`);
             console.log('----------------');
+            start();
         })
 }       
 
 function hireEngineer(){
     inquirer
-        .prompt(Engineer.engineerQuestions)
+        .prompt(questions.engineerQuestions)
         .then(data =>{
             console.log(data);
-            const newEngineer = new Engineer(data.name, data.id, data.email, data.github);
-            employees.push(newEngineer);
+            employees.push(new Engineer(data.name, data.id, data.email, data.github));
             console.log(`${data.name} has been added as an engineer.`);
             console.log('----------------');
+            start();
         })
 }
 
 function hireIntern(){
     inquirer
-        .prompt(Intern.internQuestions)
+        .prompt(questions.internQuestions)
         .then(data =>{
             employees.push(new Intern(data.name, data.id, data.email, data.school));
             console.log(`${data.name} has been added as an intern.`);
             console.log('----------------');
+            start();
         })
 }
