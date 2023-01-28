@@ -7,7 +7,7 @@ class Manager extends Employee {
     }
 
     getRole(){
-        return 'Role: Manager';
+        return 'Manager';
     }
 }
 
@@ -34,19 +34,4 @@ let managerQuestions = [
     }
 ];
 
-let managerHTML = `
-<div class="card">
-    <div class="employeeHeader">
-        <h2>${this.name}</h2>
-        <h3>${this.getRole()}</h3>
-    </div>
-    
-    <div class="info">
-        <div>${this.id}</div>
-        <div>${this.email}</div>
-        <div>${this.officeNumber}</div>
-    </div>
-</div>
-`;
-
-module.exports = {Manager, managerQuestions, managerHTML};
+module.exports = {Manager, managerQuestions};

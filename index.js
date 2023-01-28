@@ -3,15 +3,14 @@ const fs = require('fs');
 
 const Employee = require('./classes/Employee');
 const {Manager} = require('./classes/Manager');
-const {Engineer} = require('./classes/Engineer');
+const {Engineer, engineerQuestions} = require('./classes/Engineer');
 const {Intern} = require('./classes/Intern');
 
 let employees = [];
 
-
 const dave = new Manager('Dave', 20, 'dsgdfgdfg', '35');
 employees.push(dave);
-
+console.log(employees[0])
 
 start();
 
@@ -27,7 +26,7 @@ function start(){
             if(choice.firstChoice === 'View Team'){
                 viewTeam();
             }
-            else if(choise.firstChoice === 'Add Employee'){
+            else if(choice.firstChoice === 'Add Employee'){
                 addEmployee();
             }else if(choice.firstChoice === 'Generate Team Sheet'){
                 generateTeamSheet();
@@ -81,7 +80,7 @@ function hireManager(){
 
 function hireEngineer(){
     inquirer
-        .prompt(Engineer.engineerQuestions)
+        .prompt(engineerQuestions)
         .then(data =>{
             console.log(data);
             employees.push(new Engineer(data.name, data.id, data.email, data.github));
@@ -102,9 +101,10 @@ function hireIntern(){
             console.log('----------------');
             start();
         })
-}
+};
 
-let employeeHtml =
+function generateTeamSheet(){
+    let employeeHtml =
 `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -120,8 +120,57 @@ let employeeHtml =
     </header>
 
     <div class="teamContainer">
-
-
+        ${employees.forEach(function(obj, idx){
+            if(obj.getRole() === "Manager"){
+                `<div class="card">
+                <div class="employeeHeader">
+                    <h2>${obj.name}</h2>
+                    <h3>${obj.getRole()}<h3>
+                </div>
+                
+                <div class="info">
+                    <div>${obj.id}</div>
+                    <div>${obj.email}</div>
+                    <div>${obj.officeNumber}</div>
+                </div>
+            </div>`
+            }else if(obj.getRole() === 'Engineer'){
+                `<div class="card">
+                    <div class="employeeHeader">
+                        <h2>${obj.name}</h2>
+                        <h3>${obj.getRole()}</h3>
+                    </div>
+                    
+                    <div class="info">
+                        <div>${obj.id}</div>
+                        <div>${obj.email}</div>
+                        <div>${obj.github}</div>
+                    </div>
+                </div>`
+            }else if(obj.getRole() === 'Intern'){
+                `<div class="card">
+                    <div class="employeeHeader">
+                        <h2>${obj.name}</h2>
+                        <h3>${obj.getRole()}</h3>
+                    </div>
+                    
+                    <div class="info">
+                        <div>${obj.id}</div>
+                        <div>${obj.email}</div>
+                        <div>${obj.school}</div>
+                    </div>
+                </div>`
+            }
+        })}
     </div>
 </body>
-</html>`
+</html>`;
+    
+    fs.writeFile('team-sheet.html', employeeHtml, err =>{
+        if(err){
+            console.log(err)
+        }else{
+            console.log('Your team sheet has been created!')
+        }
+    })
+};
