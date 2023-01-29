@@ -8,8 +8,15 @@ const {Intern, internQuestions} = require('./classes/Intern');
 
 let employees = [];
 
-const dave = new Manager('Dave', 20, 'dsgdfgdfg', '35');
+const dave = new Manager('Dave', 20, 'dsgdfgdfg', 35);
 employees.push(dave);
+
+const larry = new Engineer('Larry', 30, 'dsgdfgdfg', 'dfhgfghgfh');
+employees.push(larry);
+
+const sam = new Intern('Sam', 80, 'dsgdfgdfg', 'dffhfgfdgfds');
+employees.push(sam);
+
 console.log(employees[0].getRole())
 
 start();
@@ -126,44 +133,44 @@ function generateTeamSheet(){
         employees.forEach(function(obj, idx){
             if(obj.getRole() === "Manager"){
                 employeeHtml += `
-                <div class="card">
+                <div class="card col-4">
                     <div class="employeeHeader">
                         <h2>${obj.name}</h2>
                         <h3>${obj.getRole()}<h3>
                     </div>
                     
-                    <div class="info">
-                        <div>${obj.id}</div>
-                        <div>${obj.email}</div>
-                        <div>${obj.officeNumber}</div>
+                    <div class="infoContainer">
+                        <div class="info">ID: ${obj.id}</div>
+                        <div class="info">Email: ${obj.email}</div>
+                        <div class="info">Office Number: ${obj.officeNumber}</div>
                     </div>
                 </div>`
             }else if(obj.getRole() === 'Engineer'){
                 employeeHtml += `
-                <div class="card">
+                <div class="card col-4">
                     <div class="employeeHeader">
                         <h2>${obj.name}</h2>
                         <h3>${obj.getRole()}</h3>
                     </div>
                     
-                    <div class="info">
-                        <div>${obj.id}</div>
-                        <div>${obj.email}</div>
-                        <div>${obj.github}</div>
+                    <div class="infoContainer">
+                        <div class="info">ID: ${obj.id}</div>
+                        <div class="info">Email: ${obj.email}</div>
+                        <div class="info">GitHub: ${obj.github}</div>
                     </div>
                 </div>`
             }else if(obj.getRole() === 'Intern'){
                 employeeHtml += `
-                <div class="card">
+                <div class="card col-4">
                     <div class="employeeHeader">
                         <h2>${obj.name}</h2>
                         <h3>${obj.getRole()}</h3>
                     </div>
                     
-                    <div class="info">
-                        <div>${obj.id}</div>
-                        <div>${obj.email}</div>
-                        <div>${obj.school}</div>
+                    <div class="infoContainer">
+                        <div class="info">ID: ${obj.id}</div>
+                        <div class="info">Email: ${obj.email}</div>
+                        <div class="info">School: ${obj.school}</div>
                     </div>
                 </div>`
             }
