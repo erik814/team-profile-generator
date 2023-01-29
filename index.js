@@ -111,6 +111,8 @@ function generateTeamSheet(){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/style.css">
     <title>My Team</title>
 </head>
 <body>
@@ -118,24 +120,27 @@ function generateTeamSheet(){
         <h1>My Team</h1>
     </header>
 
-    <div class="teamContainer">`
+    <div class="container">
+        <div class="teamContainer row">`
 
         employees.forEach(function(obj, idx){
             if(obj.getRole() === "Manager"){
-                employeeHtml += `<div class="card">
-                <div class="employeeHeader">
-                    <h2>${obj.name}</h2>
-                    <h3>${obj.getRole()}<h3>
-                </div>
-                
-                <div class="info">
-                    <div>${obj.id}</div>
-                    <div>${obj.email}</div>
-                    <div>${obj.officeNumber}</div>
-                </div>
-            </div>`
+                employeeHtml += `
+                <div class="card">
+                    <div class="employeeHeader">
+                        <h2>${obj.name}</h2>
+                        <h3>${obj.getRole()}<h3>
+                    </div>
+                    
+                    <div class="info">
+                        <div>${obj.id}</div>
+                        <div>${obj.email}</div>
+                        <div>${obj.officeNumber}</div>
+                    </div>
+                </div>`
             }else if(obj.getRole() === 'Engineer'){
-                employeeHtml += `<div class="card">
+                employeeHtml += `
+                <div class="card">
                     <div class="employeeHeader">
                         <h2>${obj.name}</h2>
                         <h3>${obj.getRole()}</h3>
@@ -148,7 +153,8 @@ function generateTeamSheet(){
                     </div>
                 </div>`
             }else if(obj.getRole() === 'Intern'){
-                employeeHtml += `<div class="card">
+                employeeHtml += `
+                <div class="card">
                     <div class="employeeHeader">
                         <h2>${obj.name}</h2>
                         <h3>${obj.getRole()}</h3>
@@ -163,7 +169,9 @@ function generateTeamSheet(){
             }
         });
 
-    employeeHtml += `</div>
+    employeeHtml += `
+        </div>
+    </div>
 </body>
 </html>`;
     

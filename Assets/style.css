@@ -1,0 +1,18 @@
+body{
+    font-family: 'Poppins', sans-serif;
+}
+
+.header{
+    background-color: salmon;
+    color: white;
+}
+
+.header h1{
+    text-align: center;
+}
+
+/* employee cards */
+
+.card{
+    outline: 1px solid black;
+}
