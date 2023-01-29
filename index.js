@@ -2,15 +2,15 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 
 const Employee = require('./classes/Employee');
-const {Manager} = require('./classes/Manager');
+const {Manager, managerQuestions} = require('./classes/Manager');
 const {Engineer, engineerQuestions} = require('./classes/Engineer');
-const {Intern} = require('./classes/Intern');
+const {Intern, internQuestions} = require('./classes/Intern');
 
 let employees = [];
 
 const dave = new Manager('Dave', 20, 'dsgdfgdfg', '35');
 employees.push(dave);
-console.log(employees[0])
+console.log(employees[0].getRole())
 
 start();
 
@@ -25,8 +25,7 @@ function start(){
         .then(choice =>{
             if(choice.firstChoice === 'View Team'){
                 viewTeam();
-            }
-            else if(choice.firstChoice === 'Add Employee'){
+            }else if(choice.firstChoice === 'Add Employee'){
                 addEmployee();
             }else if(choice.firstChoice === 'Generate Team Sheet'){
                 generateTeamSheet();
@@ -60,7 +59,7 @@ function addEmployee(){
                 hireManager();
             }else if(choice.role === "Engineer"){
                 hireEngineer();
-            }else if(choice === "Intern"){
+            }else if(choice.role === "Intern"){
                 hireIntern();
             }
         })
@@ -68,7 +67,7 @@ function addEmployee(){
 
 function hireManager(){
     inquirer
-        .prompt(Manager.managerQuestions)
+        .prompt(managerQuestions)
         .then(data =>{
             employees.push(new Manager(data.name, data.id, data.email, data.officeNumber));
             console.log('----------------');
@@ -93,7 +92,7 @@ function hireEngineer(){
 
 function hireIntern(){
     inquirer
-        .prompt(Intern.internQuestions)
+        .prompt(internQuestions)
         .then(data =>{
             employees.push(new Intern(data.name, data.id, data.email, data.school));
             console.log('----------------');
@@ -119,10 +118,11 @@ function generateTeamSheet(){
         <h1>My Team</h1>
     </header>
 
-    <div class="teamContainer">
-        ${employees.forEach(function(obj, idx){
+    <div class="teamContainer">`
+
+        employees.forEach(function(obj, idx){
             if(obj.getRole() === "Manager"){
-                `<div class="card">
+                employeeHtml += `<div class="card">
                 <div class="employeeHeader">
                     <h2>${obj.name}</h2>
                     <h3>${obj.getRole()}<h3>
@@ -135,7 +135,7 @@ function generateTeamSheet(){
                 </div>
             </div>`
             }else if(obj.getRole() === 'Engineer'){
-                `<div class="card">
+                employeeHtml += `<div class="card">
                     <div class="employeeHeader">
                         <h2>${obj.name}</h2>
                         <h3>${obj.getRole()}</h3>
@@ -148,7 +148,7 @@ function generateTeamSheet(){
                     </div>
                 </div>`
             }else if(obj.getRole() === 'Intern'){
-                `<div class="card">
+                employeeHtml += `<div class="card">
                     <div class="employeeHeader">
                         <h2>${obj.name}</h2>
                         <h3>${obj.getRole()}</h3>
@@ -161,8 +161,9 @@ function generateTeamSheet(){
                     </div>
                 </div>`
             }
-        })}
-    </div>
+        });
+
+    employeeHtml += `</div>
 </body>
 </html>`;
     
