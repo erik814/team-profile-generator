@@ -8,17 +8,6 @@ const {Intern, internQuestions} = require('./classes/Intern');
 
 let employees = [];
 
-const dave = new Manager('Dave', 20, 'dsgdfgdfg', 35);
-employees.push(dave);
-
-const larry = new Engineer('Larry', 30, 'dsgdfgdfg', 'dfhgfghgfh');
-employees.push(larry);
-
-const sam = new Intern('Sam', 80, 'dsgdfgdfg', 'dffhfgfdgfds');
-employees.push(sam);
-
-console.log(employees[0].getRole())
-
 start();
 
 function start(){
@@ -75,7 +64,6 @@ function hireEngineer(){
     inquirer
         .prompt(engineerQuestions)
         .then(data =>{
-            console.log(data);
             employees.push(new Engineer(data.name, data.id, data.email, data.github));
             console.log('----------------');
             console.log(`${data.name} has been added as an engineer.`);
@@ -128,7 +116,9 @@ function generateTeamSheet(){
                     
                     <div class="infoContainer">
                         <div class="info">ID: ${obj.id}</div>
-                        <div class="info">Email: ${obj.email}</div>
+                        <div class="info">
+                            <a href = "mailto: ${obj.email}">${obj.email}</a>
+                        </div>
                         <div class="info">Office Number: ${obj.officeNumber}</div>
                     </div>
                 </div>`
@@ -142,8 +132,12 @@ function generateTeamSheet(){
                     
                     <div class="infoContainer">
                         <div class="info">ID: ${obj.id}</div>
-                        <div class="info">Email: ${obj.email}</div>
-                        <div class="info">GitHub: ${obj.github}</div>
+                        <div class="info">
+                            <a href = "mailto: ${obj.email}">${obj.email}</a>
+                        </div>
+                        <div class="info">
+                            <a href = "${obj.github}">${obj.github}</a>
+                        </div>
                     </div>
                 </div>`
             }else if(obj.getRole() === 'Intern'){
@@ -156,7 +150,9 @@ function generateTeamSheet(){
                     
                     <div class="infoContainer">
                         <div class="info">ID: ${obj.id}</div>
-                        <div class="info">Email: ${obj.email}</div>
+                        <div class="info">
+                            <a href = "mailto: ${obj.email}">${obj.email}</a>
+                        </div>
                         <div class="info">School: ${obj.school}</div>
                     </div>
                 </div>`
