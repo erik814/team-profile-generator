@@ -26,7 +26,7 @@ function start(){
         .prompt({
             type: 'list',
             message: 'What would you like to do?',
-            choices: ['View Team', 'Add Employee', 'Generate Team Sheet'],
+            choices: ['Add Employee', 'Generate Team Sheet'],
             name: 'firstChoice',
         })
         .then(choice =>{
@@ -39,19 +39,6 @@ function start(){
             }
         })
 };
-
-// come back to this, get it to console log if empty
-function viewTeam(){
-    if(employees === []){
-        console.log('There are currently no employees.')
-    }else{    
-        employees.forEach(function(obj, idx){
-            console.log(obj.getName());
-            console.log(obj.getRole());
-            console.log('----------------');
-        })
-    }   
-}
 
 function addEmployee(){
     inquirer
