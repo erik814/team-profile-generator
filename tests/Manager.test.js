@@ -17,7 +17,8 @@ describe('Manager', ()=>{
 
             expect(obj.getName()).toEqual('Sam');
             expect(obj.getId()).toEqual(23);
-            expect(obj.getEmail()).toEqual('sam@gmail.com')
+            expect(obj.getEmail()).toEqual('sam@gmail.com');
+            expect(obj.getOfficeNumber()).toEqual(42);
             expect(obj.getRole()).toEqual('Manager');
         })
     })
