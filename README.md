@@ -10,7 +10,7 @@ To use it, the user would type 'node index.js' into the terminal. They will then
 
 Here is a screenshot of the page generated in the video:
 
-![Screenshot](./assets/images/Screenshot%20(15).png)
+![Screenshot](./assets/images/screenshot.png)
 
 
 ## Tasks
